@@ -1,0 +1,73 @@
+{
+  "name": "UHC_Polaris_Dispatcher_Phase_II_Edge",
+  "description": "UiPathCoreFramework_Dispatcher",
+  "main": "Main.xaml",
+  "dependencies": {
+    "ActivityAssertUnitTest": "[1.0.0]",
+    "Microsoft.Activities": "[1.0.1]",
+    "Microsoft.Activities.Extensions": "[2.0.6.9]",
+    "Optum.Cirrus": "[2.0.8]",
+    "Optum.Cryptography": "[1.0.3]",
+    "Optum.JwtTokenConfiguration": "[1.1.0]",
+    "Optum.USP.Cirrus_Login_SingleSignOn": "[1.0.8]",
+    "UiPath.Cognitive.Activities": "[2.2.4]",
+    "UiPath.Credentials.Activities": "[1.1.6479.13204]",
+    "UiPath.Cryptography.Activities": "[1.0.6863.32236]",
+    "UiPath.Database.Activities": "[1.2.6863.32528]",
+    "UiPath.Excel.Activities": "[2.7.2]",
+    "UiPath.FTP.Activities": "[1.0.6479.13206]",
+    "UiPath.IntelligentOCR.Activities": "[1.3.1]",
+    "UiPath.Java.Activities": "[1.0.6863.33114]",
+    "UiPath.Mail.Activities": "[1.9.6]",
+    "UiPath.PDF.Activities": "[1.3.0]",
+    "UiPath.Python.Activities": "[1.1.6863.33404]",
+    "UiPath.System.Activities": "[19.10.1]",
+    "UiPath.Terminal.Activities": "[1.3.0]",
+    "UiPath.UIAutomation.Activities": "[19.11.4]",
+    "UiPath.WebAPI.Activities": "[1.4.4]",
+    "UiPath.Word.Activities": "[1.3.0]"
+  },
+  "webServices": [],
+  "entitiesStores": [],
+  "schemaVersion": "4.0",
+  "studioVersion": "19.10.6.0",
+  "projectVersion": "1.0.6906.30606",
+  "runtimeOptions": {
+    "autoDispose": false,
+    "isPausable": true,
+    "requiresUserInteraction": true,
+    "supportsPersistence": false,
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow",
+    "readyForPiP": false,
+    "startsInPiP": false
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "includeOriginalXaml": false,
+      "privateWorkflows": []
+    },
+    "processOptions": {
+      "ignoredFiles": []
+    },
+    "fileInfoCollection": [],
+    "modernBehavior": false
+  },
+  "expressionLanguage": "VisualBasic",
+  "entryPoints": [
+    {
+      "filePath": "Main.xaml",
+      "uniqueId": "78fe8197-8883-4480-be11-563c9f9db673",
+      "input": [],
+      "output": []
+    }
+  ],
+  "isTemplate": false,
+  "templateProjectData": {},
+  "publishData": {}
+}

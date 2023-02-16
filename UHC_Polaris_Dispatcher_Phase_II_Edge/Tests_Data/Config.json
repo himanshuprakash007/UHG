@@ -1,0 +1,114 @@
+[
+    //Necessary Settings to be preserved in the same order
+    {
+        "Name": "SecurityEnabled",
+        "DefaultValue": "True", // Value Can be changed to false if encryption & decryption is not required in the process.
+        "Type": "Constant"
+    },
+	{
+        "Name": "LogFile",
+        "Type": "Asset" // Asset with the name LogFile should always be present in the orchestrator and sholud have the complete location of the CommonLogg.xaml file.
+    },
+    //User Defined Settings
+    {
+        "Name": "ProjectKey",
+        "Type": "Credential" // This credential must be present if SecurityEnabled is set to True. The username in the credential should always be "Key" and password by default should be "    " i.e. (Four Spaces).
+    },
+    {
+        "Name": "SecureColumn",
+        "Type": "Asset" // This asset must be present if SecurityEnabled is set to True.
+    },
+    {
+        "Name": "ProjectQueueName",
+        "Type": "Asset" //Process Dependent
+    },
+    {
+        "Name": "RPAChallenge_URL",
+        "Type": "Asset" //Process Dependent
+    },
+    {
+        "Name": "ExcelFileLocation",
+        "Type": "Asset" //Process Dependent
+    },
+    //Constant Seetings (generally not altered)
+    {
+        "Name": "MaxRetryNumber",
+        "DefaultValue": "2",
+        "Type": "Constant"
+    },
+    {
+        "Name": "TimeoutShort",
+        "DefaultValue": "5000",
+        "Type": "Constant"
+    },
+    {
+        "Name": "TimeoutMedium",
+        "DefaultValue": "30000",
+        "Type": "Constant"
+    },
+    {
+        "Name": "TimeoutLong",
+        "DefaultValue": "120000",
+        "Type": "Constant"
+    },
+    {
+        "Name": "ExScreenshotsFolderPath",
+        "DefaultValue": "Exceptions_Screenshots",
+        "Type": "Constant"
+    },
+    {
+        "Name": "DelayShort",
+        "DefaultValue": "1000",
+        "Type": "Constant"
+    },
+    {
+        "Name": "DelayMedium",
+        "DefaultValue": "15000",
+        "Type": "Constant"
+    },
+    {
+        "Name": "DelayLong",
+        "DefaultValue": "60000",
+        "Type": "Constant"
+    },
+    {
+        "Name": "AccuracyLow",
+        "DefaultValue": "0.6",
+        "Type": "Constant"
+    },
+    {
+        "Name": "AccuracyMedium",
+        "DefaultValue": "0.8",
+        "Type": "Constant"
+    },
+    {
+        "Name": "AccuracyHigh",
+        "DefaultValue": "0.9",
+        "Type": "Constant"
+    },
+    {
+        "Name": "LogMessage_GetTransactionData",
+        "DefaultValue": "Processing Transaction Number: ",
+        "Type": "Constant"
+    },
+    {
+        "Name": "LogMessage_GetTransactionDataError",
+        "DefaultValue": "Error getting transaction data for Transaction Number: ",
+        "Type": "Constant"
+    },
+    {
+        "Name": "LogMessage_Success",
+        "DefaultValue": "Transaction Successful.",
+        "Type": "Constant"
+    },
+    {
+        "Name": "LogMessage_BusinessRuleException",
+        "DefaultValue": "Business rule exception.",
+        "Type": "Constant"
+    },
+    {
+        "Name": "LogMessage_ApplicationException",
+        "DefaultValue": "System exception.",
+        "Type": "Constant"
+    }
+]

@@ -1,0 +1,44 @@
+// To copy files from one location to another provide the source and destination and the file name of the file to be copied.
+// To copy all files put "*" in Regex.
+// To copy files based on some criteria specify the proper regex. Follow regex pattern for vb.net.
+// Specify either the regex or filename. Put null or "" in regex or filenanme if not specified.
+// Try to give absolute paths in the source and destination as relative path may not work sometimes.
+// NAS drive paths should have "\\\\" in the starting as JSON remove unnecessary escape sequences. Eg. "\\\\nas00782pn\\data\\TEG_RPA_SHARE_DRIVE\\Tech_maturity\\CommonLog"
+// To delete the file from the source set "DeleteSource" to True.
+// If destination folder doesnot exists and the user wants it should be created automatically set "CreateDestination" to True.
+
+{
+    // Example if files is to be copied from NAS Drive and filename is specified.
+    "step1": [
+        {
+            "Source": "\\\\nas00782pn\\data\\TEG_RPA_SHARE_DRIVE\\Tech_maturity\\CommonLog",
+            "Destination": "\\\\nas00912pn\\Data\\RPA_DEV_SHARE_DRIVE\\Technical_Maturity\\CommomLogging",
+            "Regex": "",
+            "FileName": "challenge.xlsx",
+            "DeleteSource": false,
+            "CreateDestination": true
+        }
+    ],
+    // Example if files is to be copied from a relative path within the working directory using a Regex.
+    "Step2": [
+        {
+            "Source": "\\Data",
+            "Destination": "\\Tests_Data",
+            "Regex": "*.json",
+            "FileName": "",
+            "DeleteSource": false,
+            "CreateDestination": true
+        }
+    ],
+    // Example if files is to be copied from a absolute path.
+    "Step3": [
+        {
+            "Source": "C:\\Documents",
+            "Destination": "C:\\Download",
+            "Regex": "?????? XYZ_*",
+            "FileName": "",
+            "DeleteSource": false,
+            "CreateDestination": true
+        }
+    ]
+}

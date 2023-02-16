@@ -1,0 +1,653 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="FileCopy" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:nj="clr-namespace:Newtonsoft.Json;assembly=Newtonsoft.Json" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:scg1="clr-namespace:System.Collections.Generic;assembly=System" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:si="clr-namespace:System.IO;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1765.33333333333,5741.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Main_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>Accessibility</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.Cryptography</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR</AssemblyReference>
+      <AssemblyReference>UiPath.Java.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Python</AssemblyReference>
+      <AssemblyReference>UiPath.Word</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualStudio.Services.Common</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>Accessibility</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Use this flow to copy files from one location to another. The files to be copied , their source and destination should be provided in the form of Json saved as an asset in Orchestrator. Refer to the documentation in case of any clarification." DisplayName="FileCopy" sap:VirtualizedContainerService.HintSize="1745.33333333333,5681.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_94">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Log 1037" sap:VirtualizedContainerService.HintSize="1703.33333333333,86.6666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_33" UnSafe="False" WorkflowFileName="[in_Config(&quot;LogFile&quot;).ToString]">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="logCode">1037</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="ExtraLog" />
+        <InArgument x:TypeArguments="x:String" x:Key="JSONPath">[in_Config("LogFile").ToString.Replace("CommonLogg.xaml","")]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <TryCatch DisplayName="Catch Exceptions while copying files" sap:VirtualizedContainerService.HintSize="1703.33333333333,5305.33333333333" sap2010:WorkflowViewState.IdRef="TryCatch_18">
+      <TryCatch.Variables>
+        <Variable x:TypeArguments="njl:JObject" Name="InnerJObject" />
+      </TryCatch.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <TryCatch.Try>
+        <Sequence DisplayName="Main" sap:VirtualizedContainerService.HintSize="1664.66666666667,5067.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_92">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="scg1:SortedDictionary(x:String, x:Object)" Name="OuterDictionary" />
+            <Variable x:TypeArguments="njl:JObject" Name="OuterJObject" />
+            <Variable x:TypeArguments="x:String" Name="FileName" />
+            <Variable x:TypeArguments="x:Boolean" Name="SourceFolderExists" />
+            <Variable x:TypeArguments="x:Boolean" Name="DestFolderExists" />
+          </Sequence.Variables>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize json-copy" sap:VirtualizedContainerService.HintSize="1622.66666666667,62" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_9" JsonObject="[OuterJObject]" JsonString="[in_Config(&quot;CopyJSON&quot;).ToString]">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:DeserializeJson>
+          <Assign DisplayName="Initialize OuterDictionary" sap:VirtualizedContainerService.HintSize="1622.66666666667,62" sap2010:WorkflowViewState.IdRef="Assign_41">
+            <Assign.To>
+              <OutArgument x:TypeArguments="scg1:SortedDictionary(x:String, x:Object)">[OuterDictionary]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="scg1:SortedDictionary(x:String, x:Object)">[JsonConvert.DeserializeObject(Of SortedDictionary(Of String, Object))(OuterJObject.ToString)]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:ForEach x:TypeArguments="scg:KeyValuePair(x:String, x:Object)" CurrentIndex="{x:Null}" DisplayName="For each Steps in JSON File" sap:VirtualizedContainerService.HintSize="1622.66666666667,4771.33333333333" sap2010:WorkflowViewState.IdRef="ForEach`1_31" Values="[OuterDictionary]">
+            <ui:ForEach.Body>
+              <ActivityAction x:TypeArguments="scg:KeyValuePair(x:String, x:Object)">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="scg:KeyValuePair(x:String, x:Object)" Name="OuterDictItem" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="For each Steps in JSON File Body" sap:VirtualizedContainerService.HintSize="1586,4632.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_91">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="njl:JArray" Name="JArray" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:DeserializeJsonArray DisplayName="Deserialize JSON Array Value" sap:VirtualizedContainerService.HintSize="1544,62" sap2010:WorkflowViewState.IdRef="DeserializeJsonArray_7" JsonArray="[JArray]" JsonString="[OuterDictItem.Value.ToString]" />
+                  <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For each item of JSON Array" sap:VirtualizedContainerService.HintSize="1544,4438.66666666667" sap2010:WorkflowViewState.IdRef="ForEach`1_30" Values="[JArray]">
+                    <ui:ForEach.Body>
+                      <ActivityAction x:TypeArguments="x:Object">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="x:Object" Name="JArrayItem" />
+                        </ActivityAction.Argument>
+                        <TryCatch DisplayName="Try catch-Exception" sap:VirtualizedContainerService.HintSize="1507.33333333333,4300" sap2010:WorkflowViewState.IdRef="TryCatch_17">
+                          <TryCatch.Try>
+                            <Sequence DisplayName="For each item of JSON Array Body" sap:VirtualizedContainerService.HintSize="1468.66666666667,4037.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_90">
+                              <Sequence.Variables>
+                                <Variable x:TypeArguments="x:String" Name="Source" />
+                                <Variable x:TypeArguments="x:String" Name="Destination" />
+                              </Sequence.Variables>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize json-JArrayItem" sap:VirtualizedContainerService.HintSize="1426.66666666667,62" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_10" JsonObject="[InnerJObject]" JsonString="[JArrayItem.ToString]" />
+                              <Sequence DisplayName="Get Source and Destination Folder Paths" sap:VirtualizedContainerService.HintSize="1426.4,752" sap2010:WorkflowViewState.IdRef="Sequence_95">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <Assign DisplayName="Get Source Folder Path" sap:VirtualizedContainerService.HintSize="464,60" sap2010:WorkflowViewState.IdRef="Assign_47">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[Source]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">[InnerJObject.Item("Source").ToString]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <Assign DisplayName="Get Destination Folder Path" sap:VirtualizedContainerService.HintSize="464,60" sap2010:WorkflowViewState.IdRef="Assign_48">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[Destination]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">[InnerJObject.Item("Destination").ToString]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <If Condition="[Source.StartsWith(&quot;\&quot;) and Not Source.StartsWith(&quot;\\&quot;)]" DisplayName="Check if relative path is supplied in Source Path" sap:VirtualizedContainerService.HintSize="464,209.6" sap2010:WorkflowViewState.IdRef="If_80">
+                                  <If.Then>
+                                    <Assign DisplayName="Update value of Source Folder Path" sap:VirtualizedContainerService.HintSize="243.2,60" sap2010:WorkflowViewState.IdRef="Assign_60">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:String">[Source]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:String">[Environment.CurrentDirectory + Source]</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                  </If.Then>
+                                </If>
+                                <If Condition="[Destination.StartsWith(&quot;\&quot;) and Not Destination.StartsWith(&quot;\\&quot;)]" DisplayName="Check if relative path is supplied in Destination Path" sap:VirtualizedContainerService.HintSize="464,209.6" sap2010:WorkflowViewState.IdRef="If_81">
+                                  <If.Then>
+                                    <Assign DisplayName="Update value of Destination Folder Path" sap:VirtualizedContainerService.HintSize="243.2,60" sap2010:WorkflowViewState.IdRef="Assign_61">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:String">[Destination]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:String">[Environment.CurrentDirectory + Destination]</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                  </If.Then>
+                                </If>
+                              </Sequence>
+                              <Switch x:TypeArguments="x:Boolean" DisplayName="Switch Case To Check FileName and Regex" Expression="[String.IsNullOrWhiteSpace(InnerJObject.Item(&quot;FileName&quot;).ToString)]" sap:VirtualizedContainerService.HintSize="1426.4,164" sap2010:WorkflowViewState.IdRef="Switch`1_3">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <If x:Key="True" Condition="[InnerJObject.Item(&quot;Regex&quot;).ToString.Equals(&quot;&quot;)]" DisplayName="Check Regex Null or Not" sap:VirtualizedContainerService.HintSize="464,209.6" sap2010:WorkflowViewState.IdRef="If_61">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <If.Then>
+                                    <Throw DisplayName="Throw Regex and FileName Null Exception while executing FileCopy" Exception="[New UiPath.Core.BusinessRuleException(&quot;Neither FileName nor Regex is specified at &quot; + OuterDictItem.Key + &quot;. Please provide atlest one value.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Throw_17" />
+                                  </If.Then>
+                                </If>
+                                <Sequence x:Key="False" DisplayName="False Case Executing" sap:VirtualizedContainerService.HintSize="1154.4,2346.4" sap2010:WorkflowViewState.IdRef="Sequence_83">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <TryCatch DisplayName="Catch Exception while Copying Files" sap:VirtualizedContainerService.HintSize="1132,2261.6" sap2010:WorkflowViewState.IdRef="TryCatch_15">
+                                    <TryCatch.Try>
+                                      <Sequence DisplayName="Sequence to Copy File based on FileName" sap:VirtualizedContainerService.HintSize="1114.4,2030.4" sap2010:WorkflowViewState.IdRef="Sequence_81">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <ui:PathExists DisplayName="Source Folder Exists or Not" Exists="[SourceFolderExists]" sap:VirtualizedContainerService.HintSize="975.2,90.4" sap2010:WorkflowViewState.IdRef="PathExists_13" Path="[Source]" PathType="Folder" />
+                                        <ui:PathExists DisplayName="Destination Folder Exists or Not" Exists="[DestFolderExists]" sap:VirtualizedContainerService.HintSize="975.2,90.4" sap2010:WorkflowViewState.IdRef="PathExists_14" Path="[Destination]" PathType="Folder" />
+                                        <If Condition="[SourceFolderExists and (DestFolderExists or InnerJObject.Item(&quot;CreateDestination&quot;).ToSTring.Equals(&quot;True&quot;))]" DisplayName="Check Source and Destination Exists or Not" sap:VirtualizedContainerService.HintSize="975.2,1275.2" sap2010:WorkflowViewState.IdRef="If_66">
+                                          <If.Then>
+                                            <Sequence DisplayName="Execute if Source Exists" sap:VirtualizedContainerService.HintSize="486.4,1125.6" sap2010:WorkflowViewState.IdRef="Sequence_80">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                              <If Condition="[DestFolderExists]" DisplayName="Check if Destination Folder Exists" sap:VirtualizedContainerService.HintSize="464,396.8" sap2010:WorkflowViewState.IdRef="If_62">
+                                                <If.Else>
+                                                  <Sequence DisplayName="Create Destination" sap:VirtualizedContainerService.HintSize="265.6,247.2" sap2010:WorkflowViewState.IdRef="Sequence_78">
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                      </scg:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
+                                                    <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Destination directory" sap:VirtualizedContainerService.HintSize="243.2,22.4" sap2010:WorkflowViewState.IdRef="CreateDirectory_9" Path="[Destination]" />
+                                                    <Assign DisplayName="Set DestFolderExists to True" sap:VirtualizedContainerService.HintSize="243.2,60" sap2010:WorkflowViewState.IdRef="Assign_42">
+                                                      <Assign.To>
+                                                        <OutArgument x:TypeArguments="x:Boolean">[DestFolderExists]</OutArgument>
+                                                      </Assign.To>
+                                                      <Assign.Value>
+                                                        <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                                      </Assign.Value>
+                                                    </Assign>
+                                                  </Sequence>
+                                                </If.Else>
+                                              </If>
+                                              <TryCatch DisplayName="Catch Exception while Copying File" sap:VirtualizedContainerService.HintSize="464,314.4" sap2010:WorkflowViewState.IdRef="TryCatch_14">
+                                                <TryCatch.Try>
+                                                  <ui:CopyFile ContinueOnError="{x:Null}" Destination="[Destination + &quot;\&quot; + InnerJObject.Item(&quot;FileName&quot;).ToString]" DisplayName="Copy file" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="CopyFile_43" Overwrite="False" Path="[Source + &quot;\&quot; + InnerJObject.Item(&quot;FileName&quot;).ToString]" />
+                                                </TryCatch.Try>
+                                                <TryCatch.Catches>
+                                                  <Catch x:TypeArguments="si:IOException" sap:VirtualizedContainerService.HintSize="403.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_29">
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                      </scg:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
+                                                    <ActivityAction x:TypeArguments="si:IOException">
+                                                      <ActivityAction.Argument>
+                                                        <DelegateInArgument x:TypeArguments="si:IOException" Name="exception" />
+                                                      </ActivityAction.Argument>
+                                                      <If Condition="[exception.Message.Contains(&quot;already exists&quot;)]" DisplayName="Check if Exception is due to File Already Existing" sap:VirtualizedContainerService.HintSize="560.8,359.2" sap2010:WorkflowViewState.IdRef="If_63">
+                                                        <If.Then>
+                                                          <Sequence DisplayName="Delete Existing File Then Copy" sap:VirtualizedContainerService.HintSize="222.4,209.6" sap2010:WorkflowViewState.IdRef="Sequence_79">
+                                                            <sap:WorkflowViewStateService.ViewState>
+                                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                              </scg:Dictionary>
+                                                            </sap:WorkflowViewStateService.ViewState>
+                                                            <ui:Delete ContinueOnError="{x:Null}" DisplayName="Delete Existing File" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Delete_25" Path="[Destination + &quot;\&quot; + InnerJObject.Item(&quot;FileName&quot;).ToString]" />
+                                                            <ui:CopyFile ContinueOnError="{x:Null}" Destination="[Destination + &quot;\&quot; + InnerJObject.Item(&quot;FileName&quot;).ToString]" DisplayName="Copy file" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="CopyFile_44" Overwrite="False" Path="[Source + &quot;\&quot; + InnerJObject.Item(&quot;FileName&quot;).ToString]" />
+                                                          </Sequence>
+                                                        </If.Then>
+                                                        <If.Else>
+                                                          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Log 1217" sap:VirtualizedContainerService.HintSize="314.4,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_26" UnSafe="False" WorkflowFileName="[in_Config(&quot;LogFile&quot;).ToString]">
+                                                            <ui:InvokeWorkflowFile.Arguments>
+                                                              <InArgument x:TypeArguments="x:String" x:Key="logCode">1217</InArgument>
+                                                              <InArgument x:TypeArguments="x:String" x:Key="ExtraLog" xml:space="preserve">["Exception : " + exception.Message + Environment.NewLine + "Error Occured while executing " + OuterDictItem.Key + Environment.NewLine +  "Exception HResult Code : " + exception.HResult.ToString]</InArgument>
+                                                              <InArgument x:TypeArguments="x:String" x:Key="JSONPath">[in_Config("LogFile").ToString.Replace("CommonLogg.xaml","")]</InArgument>
+                                                            </ui:InvokeWorkflowFile.Arguments>
+                                                          </ui:InvokeWorkflowFile>
+                                                        </If.Else>
+                                                      </If>
+                                                    </ActivityAction>
+                                                  </Catch>
+                                                  <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="403.2,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_30">
+                                                    <sap:WorkflowViewStateService.ViewState>
+                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                      </scg:Dictionary>
+                                                    </sap:WorkflowViewStateService.ViewState>
+                                                    <ActivityAction x:TypeArguments="s:Exception">
+                                                      <ActivityAction.Argument>
+                                                        <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                                                      </ActivityAction.Argument>
+                                                      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Log 1217" sap:VirtualizedContainerService.HintSize="314.4,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_27" UnSafe="False" WorkflowFileName="[in_Config(&quot;LogFile&quot;).ToString]">
+                                                        <ui:InvokeWorkflowFile.Arguments>
+                                                          <InArgument x:TypeArguments="x:String" x:Key="logCode">1217</InArgument>
+                                                          <InArgument x:TypeArguments="x:String" x:Key="ExtraLog" xml:space="preserve">["Exception : " + exception.Message + Environment.NewLine + "Error Occured while executing " + OuterDictItem.Key + Environment.NewLine +  "Exception HResult Code : " + exception.HResult.ToString]</InArgument>
+                                                          <InArgument x:TypeArguments="x:String" x:Key="JSONPath">[in_Config("LogFile").ToString.Replace("CommonLogg.xaml","")]</InArgument>
+                                                        </ui:InvokeWorkflowFile.Arguments>
+                                                      </ui:InvokeWorkflowFile>
+                                                    </ActivityAction>
+                                                  </Catch>
+                                                </TryCatch.Catches>
+                                              </TryCatch>
+                                              <If Condition="[InnerJObject.Item(&quot;DeleteSource&quot;).ToSTring.Equals(&quot;True&quot;)]" DisplayName="Check if to Delete From Source" sap:VirtualizedContainerService.HintSize="464,209.6" sap2010:WorkflowViewState.IdRef="If_64">
+                                                <If.Then>
+                                                  <ui:Delete ContinueOnError="{x:Null}" DisplayName="Delete Source File" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Delete_26" Path="[Source + &quot;\&quot; + InnerJObject.Item(&quot;FileName&quot;).ToString]" />
+                                                </If.Then>
+                                              </If>
+                                            </Sequence>
+                                          </If.Then>
+                                          <If.Else>
+                                            <If Condition="[SourceFolderExists]" DisplayName="Check Source Folder Exists or Not" sap:VirtualizedContainerService.HintSize="464,209.6" sap2010:WorkflowViewState.IdRef="If_75">
+                                              <If.Then>
+                                                <Throw DisplayName="Throw Destination doesnot Exists Error while executing FileCopy" Exception="[new UiPath.Core.BusinessRuleException(&quot;Destination Folder '&quot;+ Destination + &quot;' does not exists and creation of Destination folder is set to false.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Throw_23" />
+                                              </If.Then>
+                                              <If.Else>
+                                                <Throw DisplayName="Throw Source Doesnot Exists Exception while executing FileCopy" Exception="[new UiPath.Core.BusinessRuleException(&quot;Source Folder '&quot;+ Source +&quot;' does not exists.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Throw_24" />
+                                              </If.Else>
+                                            </If>
+                                          </If.Else>
+                                        </If>
+                                      </Sequence>
+                                    </TryCatch.Try>
+                                    <TryCatch.Catches>
+                                      <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="1000.8,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_31">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <ActivityAction x:TypeArguments="s:Exception">
+                                          <ActivityAction.Argument>
+                                            <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                                          </ActivityAction.Argument>
+                                          <If Condition="[exception.Message.Contains(&quot;already exists&quot;)]" DisplayName="Check if Exception is due to File Already Existing" sap:VirtualizedContainerService.HintSize="560.8,359.2" sap2010:WorkflowViewState.IdRef="If_67">
+                                            <If.Then>
+                                              <Sequence DisplayName="Delete Existing File Then Copy" sap:VirtualizedContainerService.HintSize="222.4,209.6" sap2010:WorkflowViewState.IdRef="Sequence_82">
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                                <ui:Delete ContinueOnError="{x:Null}" DisplayName="Delete Existing File" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Delete_27" Path="[Destination + &quot;\&quot; + InnerJObject.Item(&quot;FileName&quot;).ToString]" />
+                                                <ui:CopyFile ContinueOnError="{x:Null}" Destination="[Destination + &quot;\&quot; + InnerJObject.Item(&quot;FileName&quot;).ToString]" DisplayName="Copy file" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="CopyFile_45" Overwrite="False" Path="[Source + &quot;\&quot; + InnerJObject.Item(&quot;FileName&quot;).ToString]" />
+                                              </Sequence>
+                                            </If.Then>
+                                            <If.Else>
+                                              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Log 1217" sap:VirtualizedContainerService.HintSize="314.4,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_28" UnSafe="False" WorkflowFileName="[in_Config(&quot;LogFile&quot;).ToString]">
+                                                <ui:InvokeWorkflowFile.Arguments>
+                                                  <InArgument x:TypeArguments="x:String" x:Key="logCode">1217</InArgument>
+                                                  <InArgument x:TypeArguments="x:String" x:Key="ExtraLog" xml:space="preserve">["Exception : " + exception.Message + Environment.NewLine + "Error Occured while executing " + OuterDictItem.Key + Environment.NewLine +  "Exception HResult Code : " + exception.HResult.ToString]</InArgument>
+                                                  <InArgument x:TypeArguments="x:String" x:Key="JSONPath">[in_Config("LogFile").ToString.Replace("CommonLogg.xaml","")]</InArgument>
+                                                </ui:InvokeWorkflowFile.Arguments>
+                                              </ui:InvokeWorkflowFile>
+                                            </If.Else>
+                                          </If>
+                                        </ActivityAction>
+                                      </Catch>
+                                    </TryCatch.Catches>
+                                  </TryCatch>
+                                </Sequence>
+                              </Switch>
+                              <If Condition="[InnerJObject.Item(&quot;Regex&quot;).ToString.Equals(&quot;&quot;)]" DisplayName="Check Regex Null or Not-1" sap:VirtualizedContainerService.HintSize="1426.4,2847.2" sap2010:WorkflowViewState.IdRef="If_74">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <If.Else>
+                                  <Sequence DisplayName="Sequence to copy files based on Regex" sap:VirtualizedContainerService.HintSize="1301.6,2697.6" sap2010:WorkflowViewState.IdRef="Sequence_89">
+                                    <Sequence.Variables>
+                                      <Variable x:TypeArguments="s:String[]" Name="Files" />
+                                    </Sequence.Variables>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:PathExists DisplayName="Source Folder Exists or Not" Exists="[SourceFolderExists]" sap:VirtualizedContainerService.HintSize="1279.2,90.4" sap2010:WorkflowViewState.IdRef="PathExists_15" Path="[Source]" PathType="Folder" />
+                                    <ui:PathExists DisplayName="Destination Folder Exists or Not" Exists="[DestFolderExists]" sap:VirtualizedContainerService.HintSize="1279.2,90.4" sap2010:WorkflowViewState.IdRef="PathExists_16" Path="[Destination]" PathType="Folder" />
+                                    <If Condition="[SourceFolderExists and (DestFolderExists or InnerJObject.Item(&quot;CreateDestination&quot;).ToSTring.Equals(&quot;True&quot;))]" DisplayName="Check Source and Destination Exists or Not" sap:VirtualizedContainerService.HintSize="1279.2,2312" sap2010:WorkflowViewState.IdRef="If_73">
+                                      <If.Then>
+                                        <Sequence DisplayName="Execute if Source Exists" sap:VirtualizedContainerService.HintSize="790.4,2162.4" sap2010:WorkflowViewState.IdRef="Sequence_88">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <Assign DisplayName="Get Files from Source Folder" sap:VirtualizedContainerService.HintSize="768,60" sap2010:WorkflowViewState.IdRef="Assign_43">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="s:String[]">[Files]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="s:String[]">[Directory.GetFiles(Source)]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For each Files in Source Folder" sap:VirtualizedContainerService.HintSize="768,1937.6" sap2010:WorkflowViewState.IdRef="ForEach`1_29" Values="[Files]">
+                                            <ui:ForEach.Body>
+                                              <ActivityAction x:TypeArguments="x:String">
+                                                <ActivityAction.Argument>
+                                                  <DelegateInArgument x:TypeArguments="x:String" Name="item" />
+                                                </ActivityAction.Argument>
+                                                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="752,1803.2" sap2010:WorkflowViewState.IdRef="Sequence_87">
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                  <Assign DisplayName="Get FileName from the Path" sap:VirtualizedContainerService.HintSize="729.6,60" sap2010:WorkflowViewState.IdRef="Assign_44">
+                                                    <Assign.To>
+                                                      <OutArgument x:TypeArguments="x:String">[FileName]</OutArgument>
+                                                    </Assign.To>
+                                                    <Assign.Value>
+                                                      <InArgument x:TypeArguments="x:String">[item.Substring(item.LastIndexOf("\")+ 1)]</InArgument>
+                                                    </Assign.Value>
+                                                  </Assign>
+                                                  <If Condition="[FileName Like InnerJObject.Item(&quot;Regex&quot;).ToString]" DisplayName="Check Regex matches or not" sap:VirtualizedContainerService.HintSize="729.6,1578.4" sap2010:WorkflowViewState.IdRef="If_71">
+                                                    <If.Then>
+                                                      <Sequence DisplayName="Sequence-IfRegexMatches" sap:VirtualizedContainerService.HintSize="604.8,1428.8" sap2010:WorkflowViewState.IdRef="Sequence_86">
+                                                        <sap:WorkflowViewStateService.ViewState>
+                                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                          </scg:Dictionary>
+                                                        </sap:WorkflowViewStateService.ViewState>
+                                                        <If Condition="[DestFolderExists]" DisplayName="Check if Destination Folder Exists" sap:VirtualizedContainerService.HintSize="582.4,396.8" sap2010:WorkflowViewState.IdRef="If_68">
+                                                          <If.Else>
+                                                            <Sequence DisplayName="Create Destination" sap:VirtualizedContainerService.HintSize="265.6,247.2" sap2010:WorkflowViewState.IdRef="Sequence_84">
+                                                              <sap:WorkflowViewStateService.ViewState>
+                                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                </scg:Dictionary>
+                                                              </sap:WorkflowViewStateService.ViewState>
+                                                              <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Destination directory" sap:VirtualizedContainerService.HintSize="243.2,22.4" sap2010:WorkflowViewState.IdRef="CreateDirectory_10" Path="[Destination]" />
+                                                              <Assign DisplayName="Set DestFolderExists to True" sap:VirtualizedContainerService.HintSize="243.2,60" sap2010:WorkflowViewState.IdRef="Assign_45">
+                                                                <Assign.To>
+                                                                  <OutArgument x:TypeArguments="x:Boolean">[DestFolderExists]</OutArgument>
+                                                                </Assign.To>
+                                                                <Assign.Value>
+                                                                  <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                                                </Assign.Value>
+                                                              </Assign>
+                                                            </Sequence>
+                                                          </If.Else>
+                                                        </If>
+                                                        <TryCatch DisplayName="Catch Exception while Copying File" sap:VirtualizedContainerService.HintSize="582.4,617.6" sap2010:WorkflowViewState.IdRef="TryCatch_16">
+                                                          <TryCatch.Try>
+                                                            <ui:CopyFile ContinueOnError="{x:Null}" Destination="[Destination + &quot;\&quot; + FileName]" DisplayName="Copy file" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="CopyFile_46" Overwrite="False" Path="[Source + &quot;\&quot; + FileName]" />
+                                                          </TryCatch.Try>
+                                                          <TryCatch.Catches>
+                                                            <Catch x:TypeArguments="si:IOException" sap:VirtualizedContainerService.HintSize="568,429.6" sap2010:WorkflowViewState.IdRef="Catch`1_32">
+                                                              <sap:WorkflowViewStateService.ViewState>
+                                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                                </scg:Dictionary>
+                                                              </sap:WorkflowViewStateService.ViewState>
+                                                              <ActivityAction x:TypeArguments="si:IOException">
+                                                                <ActivityAction.Argument>
+                                                                  <DelegateInArgument x:TypeArguments="si:IOException" Name="exception" />
+                                                                </ActivityAction.Argument>
+                                                                <If Condition="[exception.Message.Contains(&quot;already exists&quot;)]" DisplayName="Check if Exception is due to File Already Existing" sap:VirtualizedContainerService.HintSize="561.6,359.2" sap2010:WorkflowViewState.IdRef="If_69">
+                                                                  <If.Then>
+                                                                    <Sequence DisplayName="Delete Existing File Then Copy" sap:VirtualizedContainerService.HintSize="222.4,209.6" sap2010:WorkflowViewState.IdRef="Sequence_85">
+                                                                      <sap:WorkflowViewStateService.ViewState>
+                                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                        </scg:Dictionary>
+                                                                      </sap:WorkflowViewStateService.ViewState>
+                                                                      <ui:Delete ContinueOnError="{x:Null}" DisplayName="Delete Existing File" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Delete_28" Path="[Destination + &quot;\&quot; + FileName]" />
+                                                                      <ui:CopyFile ContinueOnError="{x:Null}" Destination="[Destination + &quot;\&quot; + FileName]" DisplayName="Copy file" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="CopyFile_47" Overwrite="False" Path="[Source + &quot;\&quot; +FileName]" />
+                                                                    </Sequence>
+                                                                  </If.Then>
+                                                                  <If.Else>
+                                                                    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Log 1217" sap:VirtualizedContainerService.HintSize="314.4,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_29" UnSafe="False" WorkflowFileName="[in_Config(&quot;LogFile&quot;).ToString]">
+                                                                      <ui:InvokeWorkflowFile.Arguments>
+                                                                        <InArgument x:TypeArguments="x:String" x:Key="logCode">1217</InArgument>
+                                                                        <InArgument x:TypeArguments="x:String" x:Key="ExtraLog" xml:space="preserve">["Exception : " + exception.Message + Environment.NewLine + "Error Occured while executing " + OuterDictItem.Key + Environment.NewLine +  "Exception HResult Code : " + exception.HResult.ToString]</InArgument>
+                                                                        <InArgument x:TypeArguments="x:String" x:Key="JSONPath">[in_Config("LogFile").ToString.Replace("CommonLogg.xaml","")]</InArgument>
+                                                                      </ui:InvokeWorkflowFile.Arguments>
+                                                                    </ui:InvokeWorkflowFile>
+                                                                  </If.Else>
+                                                                </If>
+                                                              </ActivityAction>
+                                                            </Catch>
+                                                            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="568,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_33">
+                                                              <sap:WorkflowViewStateService.ViewState>
+                                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                                </scg:Dictionary>
+                                                              </sap:WorkflowViewStateService.ViewState>
+                                                              <ActivityAction x:TypeArguments="s:Exception">
+                                                                <ActivityAction.Argument>
+                                                                  <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                                                                </ActivityAction.Argument>
+                                                                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Log 1217" sap:VirtualizedContainerService.HintSize="314.4,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_30" UnSafe="False" WorkflowFileName="[in_Config(&quot;LogFile&quot;).ToString]">
+                                                                  <ui:InvokeWorkflowFile.Arguments>
+                                                                    <InArgument x:TypeArguments="x:String" x:Key="logCode">1217</InArgument>
+                                                                    <InArgument x:TypeArguments="x:String" x:Key="ExtraLog" xml:space="preserve">["Exception : " + exception.Message + Environment.NewLine + "Error Occured while executing " + OuterDictItem.Key + Environment.NewLine +  "Exception HResult Code : " + exception.HResult.ToString]</InArgument>
+                                                                    <InArgument x:TypeArguments="x:String" x:Key="JSONPath">[in_Config("LogFile").ToString.Replace("CommonLogg.xaml","")]</InArgument>
+                                                                  </ui:InvokeWorkflowFile.Arguments>
+                                                                </ui:InvokeWorkflowFile>
+                                                              </ActivityAction>
+                                                            </Catch>
+                                                          </TryCatch.Catches>
+                                                        </TryCatch>
+                                                        <If Condition="[InnerJObject.Item(&quot;DeleteSource&quot;).ToSTring.Equals(&quot;True&quot;)]" DisplayName="Check if to Delete From Source" sap:VirtualizedContainerService.HintSize="582.4,209.6" sap2010:WorkflowViewState.IdRef="If_70">
+                                                          <If.Then>
+                                                            <ui:Delete ContinueOnError="{x:Null}" DisplayName="Delete Source File" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Delete_29" Path="[Destination + &quot;\&quot; + FileName]" />
+                                                          </If.Then>
+                                                        </If>
+                                                      </Sequence>
+                                                    </If.Then>
+                                                  </If>
+                                                </Sequence>
+                                              </ActivityAction>
+                                            </ui:ForEach.Body>
+                                          </ui:ForEach>
+                                        </Sequence>
+                                      </If.Then>
+                                      <If.Else>
+                                        <If Condition="[SourceFolderExists]" DisplayName="Check Source Folder Exists or Not" sap:VirtualizedContainerService.HintSize="464,209.6" sap2010:WorkflowViewState.IdRef="If_72">
+                                          <If.Then>
+                                            <Throw DisplayName="Throw Destination doesnot Exists Error while executing FileCopy" Exception="[new UiPath.Core.BusinessRuleException(&quot;Destination Folder '&quot;+ Destination + &quot;' does not exists and creation of Destination folder is set to false.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Throw_20" />
+                                          </If.Then>
+                                          <If.Else>
+                                            <Throw DisplayName="Throw Source Doesnot Exists Exception while executing FileCopy" Exception="[new UiPath.Core.BusinessRuleException(&quot;Source Folder '&quot;+ Source +&quot;' does not exists.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Throw_21" />
+                                          </If.Else>
+                                        </If>
+                                      </If.Else>
+                                    </If>
+                                  </Sequence>
+                                </If.Else>
+                              </If>
+                            </Sequence>
+                          </TryCatch.Try>
+                          <TryCatch.Catches>
+                            <Catch x:TypeArguments="nj:JsonReaderException" sap:VirtualizedContainerService.HintSize="1452,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_34">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ActivityAction x:TypeArguments="nj:JsonReaderException">
+                                <ActivityAction.Argument>
+                                  <DelegateInArgument x:TypeArguments="nj:JsonReaderException" Name="exception" />
+                                </ActivityAction.Argument>
+                                <Rethrow DisplayName="Throw error while executing FileCopy" sap:VirtualizedContainerService.HintSize="200,22.4" sap2010:WorkflowViewState.IdRef="Rethrow_2" />
+                              </ActivityAction>
+                            </Catch>
+                            <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="1452,22.4" sap2010:WorkflowViewState.IdRef="Catch`1_35">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ActivityAction x:TypeArguments="s:Exception">
+                                <ActivityAction.Argument>
+                                  <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                                </ActivityAction.Argument>
+                                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Log 1217" sap:VirtualizedContainerService.HintSize="314.4,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_31" UnSafe="False" WorkflowFileName="[in_Config(&quot;LogFile&quot;).ToString]">
+                                  <ui:InvokeWorkflowFile.Arguments>
+                                    <InArgument x:TypeArguments="x:String" x:Key="logCode">1217</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="ExtraLog" xml:space="preserve">["Exception : " + exception.Message + Environment.NewLine + "Error Occured while executing " + OuterDictItem.Key + Environment.NewLine +  "Exception HResult Code : " + exception.HResult.ToString]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="JSONPath">[in_Config("LogFile").ToString.Replace("CommonLogg.xaml","")]</InArgument>
+                                  </ui:InvokeWorkflowFile.Arguments>
+                                </ui:InvokeWorkflowFile>
+                              </ActivityAction>
+                            </Catch>
+                          </TryCatch.Catches>
+                        </TryCatch>
+                      </ActivityAction>
+                    </ui:ForEach.Body>
+                  </ui:ForEach>
+                </Sequence>
+              </ActivityAction>
+            </ui:ForEach.Body>
+          </ui:ForEach>
+        </Sequence>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="nj:JsonReaderException" sap:VirtualizedContainerService.HintSize="1669.33333333333,22" sap2010:WorkflowViewState.IdRef="Catch`1_36">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="nj:JsonReaderException">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="nj:JsonReaderException" Name="exception" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Sequence-ThrowJSON" sap:VirtualizedContainerService.HintSize="375.333333333333,243.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_93">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Log 1217" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_32" UnSafe="False" WorkflowFileName="[in_Config(&quot;LogFile&quot;).ToString]">
+                <ui:InvokeWorkflowFile.Arguments>
+                  <InArgument x:TypeArguments="x:String" x:Key="logCode">1217</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="ExtraLog" xml:space="preserve">["An Exception occured while parsing JSON File." + Environment.NewLine  + "Exception : " + exception.Message + Environment.NewLine +  "Exception HResult Code : " + exception.HResult.ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="JSONPath">[in_Config("LogFile").ToString.Replace("CommonLogg.xaml","")]</InArgument>
+                </ui:InvokeWorkflowFile.Arguments>
+              </ui:InvokeWorkflowFile>
+              <Throw DisplayName="Throw JSON Parsing Failed Exception while executing FileCopy" Exception="[new UiPath.Core.BusinessRuleException(&quot;An Exception occured while parsing JSON File.&quot; + Environment.NewLine  + &quot;Exception : &quot; + exception.Message + Environment.NewLine +  &quot;Exception HResult Code : &quot; + exception.HResult.ToString)]" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="Throw_22" />
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Log 1038" sap:VirtualizedContainerService.HintSize="1703.33333333333,86.6666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_34" UnSafe="False" WorkflowFileName="[in_Config(&quot;LogFile&quot;).ToString]">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="logCode">1038</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="ExtraLog" />
+        <InArgument x:TypeArguments="x:String" x:Key="JSONPath">[in_Config("LogFile").ToString.Replace("CommonLogg.xaml","")]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+  </Sequence>
+</Activity>

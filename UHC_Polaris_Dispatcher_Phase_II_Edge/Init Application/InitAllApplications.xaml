@@ -1,0 +1,331 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Initialize_Applications" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:o="clr-namespace:Optum_USP_Cirrus_Login_SingleSignOn;assembly=Optum.USP.Cirrus_Login_SingleSignOn" xmlns:oca="clr-namespace:Optum.Cirrus.API;assembly=Optum.Cirrus" xmlns:oj="clr-namespace:Optum.JwtTokenConfiguration;assembly=Optum.JwtTokenConfiguration" xmlns:p="http://schemas.microsoft.com/workflow/2012/07/xaml/activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="io_AppInstance" Type="InOutArgument(scg:List(x:Object))" />
+    <x:Property Name="io_CommonLogData" Type="InOutArgument(x:String)" />
+    <x:Property Name="in_ProjectName" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1153.33333333333,2633.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Initialization_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Management.Automation</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>Optum.Cirrus.API</x:String>
+      <x:String>Optum.JwtTokenConfiguration</x:String>
+      <x:String>System.Net</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>Optum_USP_Cirrus_Login_SingleSignOn</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Management.Automation</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>TimeSpan2</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR</AssemblyReference>
+      <AssemblyReference>UiPath.Python</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualStudio.Services.Common</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Cryptography</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Java.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.PDF</AssemblyReference>
+      <AssemblyReference>UiPath.Word</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>Optum.Cirrus</AssemblyReference>
+      <AssemblyReference>Optum.JwtTokenConfiguration</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>Optum.USP.Cirrus_Login_SingleSignOn</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Open and initialize application as needed.&#xA;Login into the target application.&#xA;Add the successfully opened application instance into the list of instances otherwise throw system error." DisplayName="Initialization Sequence" sap:VirtualizedContainerService.HintSize="1036,2568.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_9">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="ui:Browser" Name="Browser" />
+      <Variable x:TypeArguments="x:Boolean" Name="OpeningSuccess" />
+      <Variable x:TypeArguments="x:Int32" Name="intLoginCounter" />
+      <Variable x:TypeArguments="x:String" Name="strLoginError" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Log 1016" sap:VirtualizedContainerService.HintSize="994,86.6666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="[in_Config(&quot;LogFile&quot;).ToString]">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="logCode">1016</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="ExtraLog" />
+        <InArgument x:TypeArguments="x:String" x:Key="JSONPath">[in_Config("LogFile").ToString.Replace("CommonLogg.xaml","")]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="TransactionIdentifier" />
+        <InArgument x:TypeArguments="x:String" x:Key="TransactionStatus" />
+        <InOutArgument x:TypeArguments="x:String" x:Key="CommonLogData">[io_CommonLogData]</InOutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="ProjectName">[in_ProjectName]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:RetryScope ContinueOnError="True" DisplayName="Retry Scope: Login" sap:VirtualizedContainerService.HintSize="994,1326" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="[convert.ToInt32(in_Config(&quot;MaxRetryNumber&quot;).ToString)]" RetryInterval="[New TimeSpan(0,0,0,0,Convert.ToInt32(in_Config(&quot;TimeoutShort&quot;).ToString))]">
+      <ui:RetryScope.ActivityBody>
+        <ActivityAction>
+          <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="897.333333333333,1143.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_25">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If Condition="[string.IsNullOrEmpty(strLoginError)]" DisplayName="If Login Error empty or First try, login into Cirrus else skip" sap:VirtualizedContainerService.HintSize="855.333333333333,1051.33333333333" sap2010:WorkflowViewState.IdRef="If_2">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If.Then>
+                <Sequence DisplayName="Sequence: Retry on SE" sap:VirtualizedContainerService.HintSize="709.333333333333,900.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Log 14270" sap:VirtualizedContainerService.HintSize="667.333333333333,86.6666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="[in_Config(&quot;LogFile&quot;).ToString]">
+                    <ui:InvokeWorkflowFile.Arguments>
+                      <InArgument x:TypeArguments="x:String" x:Key="logCode">14270</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="ExtraLog">["Login Attempt Number : "+intLoginCounter.ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="JSONPath">[in_Config("LogFile").ToString.Replace("CommonLogg.xaml","")]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="TransactionIdentifier" />
+                      <InArgument x:TypeArguments="x:String" x:Key="TransactionStatus" />
+                      <InOutArgument x:TypeArguments="x:String" x:Key="CommonLogData">[io_CommonLogData]</InOutArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="ProjectName">[in_ProjectName]</InArgument>
+                    </ui:InvokeWorkflowFile.Arguments>
+                  </ui:InvokeWorkflowFile>
+                  <Assign DisplayName="Assign: intLoginCounter" sap:VirtualizedContainerService.HintSize="667.333333333333,62" sap2010:WorkflowViewState.IdRef="Assign_2">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Int32">[intLoginCounter]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Int32">[intLoginCounter + 1]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <oca:Encryption_Key AccountName="[Convert.ToString(in_Config(&quot;Encryption_AccountName&quot;))]" CyberArkURL="[Convert.ToString(in_Config(&quot;Encryption_URL&quot;))]" DisplayName="Get Encryption Key" sap:VirtualizedContainerService.HintSize="667.333333333333,22" sap2010:WorkflowViewState.IdRef="Encryption_Key_1" SafeId="[Convert.ToString(in_Config(&quot;Encryption_SafeId&quot;))]" UserId="[Convert.ToString(in_Config(&quot;Encryption_UserId&quot;))]" />
+                  <oj:JwtTokenSetting DisplayName="Jwt token setting" sap:VirtualizedContainerService.HintSize="667.333333333333,22" sap2010:WorkflowViewState.IdRef="JwtTokenSetting_1" JwtKey="[Convert.ToString(in_Config(&quot;Stargate_JWT_CredentialsUserName&quot;))]" JwtSecret="[new Net.NetworkCredential(&quot;&quot;,DirectCast(in_Config(&quot;Stargate_JWT_CredentialsPassword&quot;),SecureString)).Password]" TokenExpirationTime="60" />
+                  <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke TryCatchKillprocess workflow" sap:VirtualizedContainerService.HintSize="667.333333333333,86.6666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_15" UnSafe="False" WorkflowFileName="Kill Process\TryCatchKillprocess.xaml">
+                    <ui:InvokeWorkflowFile.Arguments>
+                      <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                    </ui:InvokeWorkflowFile.Arguments>
+                  </ui:InvokeWorkflowFile>
+                  <Sequence DisplayName="Cirrus Login Sequence" sap:VirtualizedContainerService.HintSize="667.333333333333,329.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <If Condition="[convert.ToBoolean(in_Config(&quot;SSO_Cirrus_Login&quot;))]" DisplayName="SSO Login If" sap:VirtualizedContainerService.HintSize="625.333333333333,237.333333333333" sap2010:WorkflowViewState.IdRef="If_5">
+                      <If.Then>
+                        <o:Cirrus_Login_SingleSignOn_Edge DisplayName="CirrusLogin_SingleSignOn" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Cirrus_Login_SingleSignOn_Edge_1" In_Password="[TryCast( in_Config(&quot;Cirrus_CredsPassword&quot;),System.Security.SecureString)]" Out_OpeningSuccess="[OpeningSuccess]" in_CirrusUrl="[in_Config(&quot;Cirrus_URL&quot;).ToString]" in_Config="[in_Config]" in_UserID="[in_Config(&quot;Cirrus_CredsUserName&quot;).ToString]" out_CirrusBrowser="[Browser]" out_loginError="[strLoginError]" />
+                      </If.Then>
+                      <If.Else>
+                        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Cirrus_Login_Sequence_SingleSignOn_Edge workflow" sap:VirtualizedContainerService.HintSize="379.333333333333,86.6666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_16" UnSafe="False" WorkflowFileName="Init Application\Cirrus_Login_Sequence_SingleSignOn_Edge.xaml">
+                          <ui:InvokeWorkflowFile.Arguments>
+                            <InArgument x:TypeArguments="x:String" x:Key="In_sURL">
+                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;Cirrus_URL&quot;).ToString" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="In_UserID">
+                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;Cirrus_CredsUserName&quot;).ToString" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="ss:SecureString" x:Key="In_Password">
+                              <mva:VisualBasicValue x:TypeArguments="ss:SecureString" ExpressionText="TryCast( in_config(&quot;Cirrus_CredsPassword&quot;),System.Security.SecureString)" />
+                            </InArgument>
+                            <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_OpeningSuccess">
+                              <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="OpeningSuccess" />
+                            </OutArgument>
+                            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                              <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+                            </InArgument>
+                            <OutArgument x:TypeArguments="ui:Browser" x:Key="out_Browser">
+                              <mva:VisualBasicReference x:TypeArguments="ui:Browser" ExpressionText="browser" />
+                            </OutArgument>
+                            <OutArgument x:TypeArguments="x:String" x:Key="out_loginError">
+                              <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="strLoginError" />
+                            </OutArgument>
+                            <InOutArgument x:TypeArguments="x:String" x:Key="io_CommonLogData">
+                              <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="io_CommonLogData" />
+                            </InOutArgument>
+                            <InArgument x:TypeArguments="x:String" x:Key="in_ProjectName">
+                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ProjectName" />
+                            </InArgument>
+                          </ui:InvokeWorkflowFile.Arguments>
+                        </ui:InvokeWorkflowFile>
+                      </If.Else>
+                    </If>
+                  </Sequence>
+                </Sequence>
+              </If.Then>
+            </If>
+          </Sequence>
+        </ActivityAction>
+      </ui:RetryScope.ActivityBody>
+      <ui:RetryScope.Condition>
+        <ActivityFunc x:TypeArguments="x:Boolean">
+          <p:IsEqual x:TypeArguments="x:Boolean" DisplayName="Is equal" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="IsEqual`1_1" Left="[OpeningSuccess]" Result="[OpeningSuccess]" Right="True" />
+        </ActivityFunc>
+      </ui:RetryScope.Condition>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:RetryScope>
+    <If sap2010:Annotation.AnnotationText="Checks whether the application has opened successfully.&#xA;If true adds the opened instance into the list of opened instances.&#xA;If false throws system error." Condition="[OpeningSuccess]" DisplayName="Check App Open or Not" sap:VirtualizedContainerService.HintSize="994,668.666666666667" sap2010:WorkflowViewState.IdRef="If_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Sequence DisplayName="Sequence: Open Success" sap:VirtualizedContainerService.HintSize="376,240.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_18">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <AddToCollection x:TypeArguments="x:Object" Collection="[io_AppInstance]" DisplayName="Add to collection" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddToCollection`1_4" Item="[Browser]" />
+          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Log 1015-3" sap:VirtualizedContainerService.HintSize="334,86.6666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="[in_Config(&quot;LogFile&quot;).ToString]">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="logCode">1015-3</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="ExtraLog">RPA Challaenge</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="JSONPath">[in_Config("LogFile").ToString]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="TransactionIdentifier" />
+              <InArgument x:TypeArguments="x:String" x:Key="TransactionStatus" />
+              <InOutArgument x:TypeArguments="x:String" x:Key="CommonLogData">[io_CommonLogData]</InOutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="ProjectName">[in_ProjectName]</InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Sequence: Mail " sap:VirtualizedContainerService.HintSize="572,452.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_19">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Log 1015-2" sap:VirtualizedContainerService.HintSize="530,52.6666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="[in_Config(&quot;LogFile&quot;).ToString]">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="logCode">1015-2</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="ExtraLog">RPA Challenge</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="JSONPath">[in_Config("LogFile").ToString]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="TransactionIdentifier" />
+              <InArgument x:TypeArguments="x:String" x:Key="TransactionStatus" />
+              <InOutArgument x:TypeArguments="x:String" x:Key="CommonLogData">[io_CommonLogData]</InOutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="ProjectName">[in_ProjectName]</InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:InvokeWorkflowFile>
+          <If Condition="[string.IsNullOrEmpty(strLoginError)]" DisplayName="If Error msg is empty, send Retry Mail else send extracted error in mail" sap:VirtualizedContainerService.HintSize="530,268" sap2010:WorkflowViewState.IdRef="If_3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <If.Then>
+              <Sequence DisplayName="Sequence: Alert Mail" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Throw DisplayName="Throw System Exception while executing InitAllApplications" Exception="[new System.Exception(&quot;Unable to Login Cirrus. Max Retry Value : &quot;+in_Config(&quot;MaxRetryNumber&quot;).ToString+&quot;  exceded.&quot;)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_2" />
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <Sequence DisplayName="Sequence: Mail Alert" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <Throw DisplayName="Throw BE while executing InitAllApplications" Exception="[new BusinessRuleException(&quot;Unable to Login Cirrus. Error found on Application Screen : &quot;+strLoginError)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_3" />
+              </Sequence>
+            </If.Else>
+          </If>
+        </Sequence>
+      </If.Else>
+    </If>
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Log 1017" sap:VirtualizedContainerService.HintSize="994,86.6666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="[in_Config(&quot;LogFile&quot;).ToString]">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="logCode">1017</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="ExtraLog" />
+        <InArgument x:TypeArguments="x:String" x:Key="JSONPath">[in_Config("LogFile").ToString.Replace("CommonLogg.xaml","")]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="TransactionIdentifier" />
+        <InArgument x:TypeArguments="x:String" x:Key="TransactionStatus" />
+        <InOutArgument x:TypeArguments="x:String" x:Key="CommonLogData">[io_CommonLogData]</InOutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="ProjectName">[in_ProjectName]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Log 1015-9" sap:VirtualizedContainerService.HintSize="994,86.6666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="[in_Config(&quot;LogFile&quot;).ToString]">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="logCode">1015-9</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="ExtraLog" />
+        <InArgument x:TypeArguments="x:String" x:Key="JSONPath">[in_Config("LogFile").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="TransactionIdentifier" />
+        <InArgument x:TypeArguments="x:String" x:Key="TransactionStatus" />
+        <InOutArgument x:TypeArguments="x:String" x:Key="CommonLogData">[io_CommonLogData]</InOutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="ProjectName">[in_ProjectName]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+  </Sequence>
+</Activity>

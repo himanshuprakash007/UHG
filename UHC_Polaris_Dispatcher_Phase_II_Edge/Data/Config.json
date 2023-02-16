@@ -1,0 +1,305 @@
+[
+  //Necessary Settings to be preserved in the same order
+  {
+    "Name": "SecurityEnabled",
+    "DefaultValue": "False", // Value Can be changed to true if encryption & decryption is required in the process.
+    "Type": "Constant"
+  },
+  {
+    "Name": "LogFile",
+    "Type": "Asset" // Asset with the name LogFile should always be present in the orchestrator and sholud have the complete location of the CommonLogg.xaml file.
+  },
+  //User Defined Settings
+  {
+    "Name": "ProjectKey",
+    "Type": "Credential" // This credential must be present if SecurityEnabled is set to True. The username in the credential should always be "Key" and password by default should be "1234".
+  },
+  {
+    "Name": "ProjectQueueName",
+    "Type": "Asset" //Process Dependent
+  },
+  {
+    "Name": "Cirrus_URL",
+    "Type": "Asset" //Process Dependent
+  },
+  {
+    "Name": "Bot_ID",
+    "Type": "Asset" //Process Dependent
+  },
+ {
+    "Name": "DispatcherAgingDays",
+    "Type": "Asset" //Process Dependent
+  },
+  {
+    "Name": "Mail_CC",
+    "Type": "Asset" //Process Dependent
+  },
+  {
+    "Name": "Mail_From",
+    "Type": "Asset" //Process Dependent
+  },
+  {
+    "Name": "Mail_To",
+    "Type": "Asset" //Process Dependent
+  },
+  {
+    "Name": "SMTP_Server_Name",
+    "Type": "Asset" //Process Dependent
+  },
+  {
+    "Name": "SMTP_Server_Port",
+    "Type": "Asset" //Process Dependent
+  },
+  {
+    "Name": "RE_MaxRetry",
+    "Type": "Asset" //Process Dependent
+  },
+  {
+    "Name": "RE_Timeout",
+    "Type": "Asset" //Process Dependent
+  },
+  {
+    "Name": "RE_TimeSpan",
+    "Type": "Asset" //Process Dependent
+  },
+  {
+    "Name": "CirrusApplication_CurrentVersion",
+    "Type": "Asset" //To Get cirrus Version
+  },	
+  {
+    "Name": "Cirrus_Creds",
+    "Type": "Credential"
+  },
+  {
+    "Name": "InScope_Edit_Codes",
+    "Type": "Asset"
+  },
+  {
+    "Name": "Dispatcher_Schedule",
+    "Type": "Asset"
+  },
+  {
+    "Name": "DelayTime",
+    "Type": "Asset"
+  },
+  {
+    "Name": "MyClaimProcessRun",
+    "Type": "Asset"
+  },
+  {
+    "Name": "DownTime",
+    "Type": "Asset"
+  },
+  {
+    "Name": "IntervalTime",
+    "Type": "Asset"
+  },
+  {
+    "Name": "FromTime",
+    "Type": "Asset"
+  },
+  {
+    "Name": "Performer_OOS_EditCode",
+    "Type": "Asset"
+  },
+  {
+    "Name": "DaysSpan",
+    "Type": "Asset"
+  },
+  {
+    "Name": "FailedRetryLimit",
+    "Type": "Asset"
+  },
+  {
+    "Name": "ReusableCompPath",
+    "Type": "Asset"
+  },
+{
+    "Name": "IsSingleSignOn",
+    "Type": "Asset"
+  },
+{
+    "Name": "Cirrus_SingleSignOn_URL",
+    "Type": "Asset"
+  },
+{
+    "Name": "LockAPI_Implement",
+    "Type": "Asset"
+  },
+{
+    "Name": "CirrusAPI_JwtKey",
+    "Type": "Asset"
+  },
+{
+    "Name": "CirrusAPI_JwtSecret",
+    "Type": "Asset"
+  },
+{
+    "Name": "Lock_BotIDs_List",
+    "Type": "Asset"
+  },
+{
+    "Name": "Last_Locked_BotID",
+    "Type": "Asset"
+  },
+{
+    "Name": "MaxClaimLock",
+    "Type": "Asset"
+  },
+{
+    "Name": "CirrusAPI_BaseUrl",
+    "Type": "Asset"
+  },
+{
+    "Name": "LockQueueCategory",
+    "Type": "Asset"
+  },
+{
+    "Name": "ReusableCompPath",
+    "Type": "Asset"
+  },
+  {
+	  "Name":"IsLockRequired",
+	  "Type":"Asset"	  
+  },
+  {
+	  "Name":"FilterRoutingStatus",
+	  "Type":"Asset"	  
+  },  
+  {
+	  "Name":"MaxClaim_ToBeLocked",
+	  "Type":"Asset"	  
+  },
+  {
+	  "Name":"CirrusAPI_Resource_LockClaim",
+	  "Type":"Asset"	  
+  },  
+  {
+	  "Name":"IsMyClaimQueueRequired",
+	  "Type":"Asset"	  
+  },
+  {
+	  "Name":"MaxLock_Allowed",
+	  "Type":"Asset"	  
+  },
+  {
+	  "Name":"Dispatcher_RunDate",
+	  "Type":"Asset"	  
+  },
+  {
+    "Name": "MaxRetryNumber",
+    "DefaultValue": "1",
+    "Type": "Constant"
+  },
+  {
+    "Name": "TimeoutShort",
+    "DefaultValue": "5000",
+    "Type": "Constant"
+  },
+  {
+    "Name": "TimeoutMedium",
+    "DefaultValue": "60000",
+    "Type": "Constant"
+  },
+  {
+    "Name": "TimeoutLong",
+    "DefaultValue": "120000",
+    "Type": "Constant"
+  },
+  {
+    "Name": "ExScreenshotsFolderPath",
+    "DefaultValue": "Exceptions_Screenshots",
+    "Type": "Constant"
+  },
+  {
+    "Name": "DelayShort",
+    "DefaultValue": "2000",
+    "Type": "Constant"
+  },
+  {
+    "Name": "DelayMedium",
+    "DefaultValue": "15000",
+    "Type": "Constant"
+  },
+  {
+    "Name": "DelayLong",
+    "DefaultValue": "60000",
+    "Type": "Constant"
+  },
+  {
+    "Name": "AccuracyLow",
+    "DefaultValue": "0.6",
+    "Type": "Constant"
+  },
+  {
+    "Name": "AccuracyMedium",
+    "DefaultValue": "0.8",
+    "Type": "Constant"
+  },
+  {
+    "Name": "AccuracyHigh",
+    "DefaultValue": "0.9",
+    "Type": "Constant"
+  },
+  {
+    "Name": "LogMessage_GetTransactionData",
+    "DefaultValue": "Processing Transaction Number: ",
+    "Type": "Constant"
+  },
+  {
+    "Name": "LogMessage_GetTransactionDataError",
+    "DefaultValue": "Error getting transaction data for Transaction Number: ",
+    "Type": "Constant"
+  },
+  {
+    "Name": "LogMessage_Success",
+    "DefaultValue": "Transaction Successful.",
+    "Type": "Constant"
+  },
+  {
+    "Name": "LogMessage_BusinessRuleException",
+    "DefaultValue": "Business rule exception.",
+    "Type": "Constant"
+  },
+  {
+    "Name": "LogMessage_ApplicationException",
+    "DefaultValue": "System exception.",
+    "Type": "Constant"
+  },
+  {
+	  "Name":"CirrusAPI_Resource_ClaimDetails",
+	  "Type":"Asset"	  
+  },
+  {
+	  "Name":"CirrusAPI_NasPath",
+	  "Type":"Asset"	  
+  },
+  {
+	  "Name":"Encryption_AccountName",
+	  "Type":"Asset"	  
+  },
+  {
+	  "Name":"Encryption_SafeId",
+	  "Type":"Asset"	  
+  },
+  {
+	  "Name":"Encryption_URL",
+	  "Type":"Asset"	  
+  },
+  {
+	  "Name":"Encryption_UserId",
+	  "Type":"Asset"	  
+  },
+  {
+	  "Name":"Inventory_Source",
+	  "Type":"Asset"	  
+  },
+  {
+	  "Name":"SSO_Cirrus_Login",
+	  "Type":"Asset"	  
+  },
+  {
+	  "Name":"Stargate_JWT_Credentials",
+	  "Type":"Credential"	  
+  }
+]
